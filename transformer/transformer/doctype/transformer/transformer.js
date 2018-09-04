@@ -10,9 +10,13 @@ frappe.ui.form.on('Transformer', {
 
 frappe.ui.form.on("Transformer", "download_result", function(frm) {
   frappe.call({
+  	args: {source:cur_frm.doc.source,
+  			items:cur_frm.doc.items},
     method: "transformer.transformer.doctype.transformer.transformer.call_me",
     callback: function(r) { 
     	console.log("successz")
+    	console.log(r.message);
+    	cur_frm.set_value("result",r.message)
     }
   })
 });
