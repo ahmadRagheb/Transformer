@@ -13,18 +13,22 @@ class Transformer(Document):
 	
 @frappe.whitelist()
 def call_me(source,items):
-	frappe.msgprint(source)
-	frappe.msgprint(items)
+	save_path = 'maz2/public/files'
+	file_name = os.path.join(save_path, "dummp2.csv")
+	to_upload = os.path.join(save_path, "to_upload.csv")
+	source 	  = os.path.join(save_path, source.split('/')[-1])
+	items 	  = os.path.join(save_path, items.split('/')[-1])
 
-	ifile  = open(os.path.abspath(source), "rb")
+	
+	ifile  = open(source, "rb")
 	reader = csv.reader(ifile)
 	try:
-	    os.remove(os.path.abspath("/files/dummp2.csv"))
+	    os.remove(file_name)
 	except OSError:
 	    pass
 
 
-	ofile  = open(os.path.abspath("/files/dummp2.csv"), "wb")
+	ofile  = open(file_name, "wb")
 	writer = csv.writer(ofile)
 
 	found = {}
@@ -52,16 +56,16 @@ def call_me(source,items):
 	ofile.close()
 
 
-	ifile  = open(os.path.abspath("/files/dummp2.csv"), "rb")
+	ifile  = open(file_name, "rb")
 	reader = csv.reader(ifile)
 
 
 	try:
-	    os.remove(os.path.abspath("/files/to_upload.csv"))
+	    os.remove(to_upload)
 	except OSError:
 	    pass
 
-	ofile  = open(os.path.abspath("/files/to_upload.csv"), "wb")
+	ofile  = open(to_upload, "wb")
 	writer = csv.writer(ofile)
 
 	ifile_template  = open(items, "rb")
