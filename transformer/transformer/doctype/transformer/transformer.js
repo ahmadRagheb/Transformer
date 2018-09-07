@@ -14,9 +14,14 @@ frappe.ui.form.on("Transformer", "download_result", function(frm) {
   			items:cur_frm.doc.items},
     method: "transformer.transformer.doctype.transformer.transformer.call_me",
     callback: function(r) { 
-    	console.log("successz")
-    	console.log(r.message);
-    	cur_frm.set_value("result",r.message)
+	if(r.message == "/files/to_upload.csv"){
+    		cur_frm.set_value("result",r.message)
+                frappe.msgprint("Successfully created");
+		window.location = cur_frm.doc.result;
+
+	}else{
+		frappe.msgprint("Error please contact your IT Department")
+	}
     }
   })
 });

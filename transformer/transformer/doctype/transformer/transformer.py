@@ -13,7 +13,7 @@ class Transformer(Document):
 	
 @frappe.whitelist()
 def call_me(source,items):
-	save_path = 'maz2/public/files'
+	save_path = 'site1.local/public/files'
 	file_name = os.path.join(save_path, "dummp2.csv")
 	to_upload = os.path.join(save_path, "to_upload.csv")
 	source 	  = os.path.join(save_path, source.split('/')[-1])
@@ -85,7 +85,7 @@ def call_me(source,items):
 			temp_row.insert(0,"")
 			temp_row.insert(1,"")
 			temp_row.insert(2,row[3])
-			temp_row.insert(3,str("مجموعات جميع الاصناف"))
+			temp_row.insert(3,u"مجموعات جميع الاصناف")
 			temp_row.insert(4, "Nos")
 			temp_row.insert(5, 0 )
 			temp_row.insert(6, 1)
@@ -113,9 +113,9 @@ def call_me(source,items):
 			temp_row.insert(25, row[16])
 
 			#valuation rate
-			temp_row.insert(26,1)		
-
-			writer.writerow(temp_row)
+			temp_row.insert(26,1)
+			#frappe.msgprint(temp_row)
+			writer.writerow([unicode(s).encode("utf-8") for s in temp_row])
 
 	ifile.close()
 	ofile.close()
