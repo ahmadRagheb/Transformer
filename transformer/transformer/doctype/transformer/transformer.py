@@ -71,7 +71,7 @@ def call_me(source,items):
 			temp_row.insert(25, "")
 			temp_row.insert(26,"")		
 			temp_row.insert(27,"")
-			frappe.throw(row[6])		
+			frappe.throw(row[6] + u'msp')		
 			temp_row.insert(28,"{} - MSP".format(unicode(row[6]).encode("utf-8")))		
 			temp_row.insert(29,"")		
 			temp_row.insert(30,"{} - MSP".format(unicode(row[11]).encode("utf-8")))		
