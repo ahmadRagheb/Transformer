@@ -74,7 +74,8 @@ def call_me(source,items):
 			temp_row.insert(28,row[6] + ' - MSP'.decode().encode('utf-8'))		
 			temp_row.insert(29,"")		
 			temp_row.insert(30,row[11] + ' - MSP'.decode().encode('utf-8'))		
-			writer.writerow([unicode(s).encode("utf-8") for s in temp_row])
+			# writer.writerow([unicode(s).encode("utf-8") for s in temp_row])
+			writer.writerow(temp_row)
 	ifile.close()
 	ofile.close()
 
