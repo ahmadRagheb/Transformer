@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2018, ahmedragheb75@gmail.com and contributors
 # For license information, please see license.txt
-
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-from __future__ import unicode_literals
 import csv
 import os
 
@@ -73,9 +71,9 @@ def call_me(source,items):
 			temp_row.insert(25, "")
 			temp_row.insert(26,"")		
 			temp_row.insert(27,"")		
-			temp_row.insert(28,u"{} - MSP".format(row[6]))		
+			temp_row.insert(28,"{} - MSP".format(str(row[6])))		
 			temp_row.insert(29,"")		
-			temp_row.insert(30,u"{} - MSP".format(row[11]))
+			temp_row.insert(30,"{} - MSP".format(str(row[11])))
 			writer.writerow([unicode(s).encode("utf-8") for s in temp_row])
 	ifile.close()
 	ofile.close()
