@@ -13,7 +13,7 @@ class Transformer(Document):
 	
 @frappe.whitelist()
 def call_me(source,items):
-	save_path = 'site1.local/public/files'
+	save_path = 'site2.local/public/files'
 	# file_name = os.path.join(save_path, "dummp2.csv")
 	to_upload = os.path.join(save_path, "to_upload.csv")
 	source 	  = os.path.join(save_path, source.split('/')[-1])
@@ -71,9 +71,9 @@ def call_me(source,items):
 			temp_row.insert(25, "")
 			temp_row.insert(26,"")		
 			temp_row.insert(27,"")		
-			temp_row.insert(28,row[6]+" - MSP")		
+			temp_row.insert(28,unicode(row[6]).encode("utf-8")+" - MSP")		
 			temp_row.insert(29,"")		
-			temp_row.insert(30,row[11]+" - MSP")		
+			temp_row.insert(30,unicode(row[11]).encode("utf-8")+" - MSP")		
 			writer.writerow([unicode(s).encode("utf-8") for s in temp_row])
 	ifile.close()
 	ofile.close()
