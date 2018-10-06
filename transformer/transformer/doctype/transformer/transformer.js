@@ -10,8 +10,10 @@ frappe.ui.form.on('Transformer', {
 
 frappe.ui.form.on("Transformer", "download_result", function(frm) {
   frappe.call({
-  	args: {source:cur_frm.doc.source,
-  			items:cur_frm.doc.items},
+  	args: {
+        source:cur_frm.doc.source,
+  			items:cur_frm.doc.items
+      },
     method: "transformer.transformer.doctype.transformer.transformer.call_me",
     callback: function(r) { 
 	if(r.message == "/files/to_upload.csv"){
